@@ -19,6 +19,12 @@ namespace Shadee.ConTW
             return _model.Spend(value);
         }
 
+        public void AddCoin(int value)
+        {
+            _model.Add(value);
+            _saveData.AddCoin(value);
+        }
+
         public override IEnumerator Finalize()
         {
             yield return base.Finalize();

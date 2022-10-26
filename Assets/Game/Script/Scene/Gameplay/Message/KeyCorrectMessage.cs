@@ -4,13 +4,12 @@ using UnityEngine;
 
 namespace Shadee.ConTW.Gameplay
 {
-    public struct TimeUpMessage
+    public struct KeyCorrectMessage
     {
-        public string Message;
-
-        public TimeUpMessage(string message)
+        public int Reward {get;}
+        public KeyCorrectMessage(int reward)
         {
-            Message = message;
+            Reward = reward;
         }
     }
 }

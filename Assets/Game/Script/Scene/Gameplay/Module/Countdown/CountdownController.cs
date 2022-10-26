@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Agate.MVC.Base;
+using Shadee.ConTW.Gameplay.CoinBucket;
 using UnityEngine;
 
 namespace Shadee.ConTW.Gameplay.Countdown
 {
     public class CountdownController : ObjectController<CountdownController, CountdownModel, ICountdownModel, CountdownView>
     {
+        private CoinBucketController _coinBucketController;
         private float timeLeft;
 
         public override void SetView(CountdownView view)
@@ -31,7 +33,7 @@ namespace Shadee.ConTW.Gameplay.Countdown
                 yield return null;
             }
             SceneLoader.Instance.LoadScene("Bundle");
-            Publish<TimeUpMessage>(new TimeUpMessage());
+            Publish<GameplayEndMessage>(new GameplayEndMessage());
         }
     }
 }

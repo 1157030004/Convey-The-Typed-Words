@@ -88,6 +88,13 @@ namespace Shadee.ConTW
             Save();
         }
 
+        public void AddCoin(int coin)
+        {
+            var currentCoin = _model.Progress.Coin;
+            _model.SetCoinData(currentCoin + coin);
+            Save();
+        }
+
         public override IEnumerator Initialize()
         {
             yield return base.Initialize();

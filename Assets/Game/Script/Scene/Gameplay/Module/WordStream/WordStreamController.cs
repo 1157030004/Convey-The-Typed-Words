@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Agate.MVC.Base;
+using Shadee.ConTW.Gameplay.CoinBucket;
 using Shadee.ConTW.Gameplay.Typer;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -14,7 +15,8 @@ namespace Shadee.ConTW.Gameplay.WordStream
 {
     public class WordStreamController : ObjectController<WordStreamController, WordStreamModel, IWordStreamModel, WordStreamView>
     {
-        private char _currentChar;
+        private CurrencyController _currencyController;
+        private CoinBucketController _coinBucketController;
         private AsyncOperationHandle handle;
         private GameObject _keyObject;
         public override void SetView(WordStreamView view)
@@ -60,6 +62,12 @@ namespace Shadee.ConTW.Gameplay.WordStream
 
         private void SetNewWord()
         {
+            if(_model.wordQueue.Count <= 0) // Is there any word left?
+            {
+                Publish<GameplayEndMessage>(new GameplayEndMessage());
+                SceneLoader.Instance.LoadScene("Bundle");
+            }
+
             _model.SetNewWord(_model.wordQueue.Dequeue());
             string word = string.Join("", _model.currentWord.ToArray());
 
@@ -85,18 +93,16 @@ namespace Shadee.ConTW.Gameplay.WordStream
             if (_model.CheckKey(message.SelectedKey))
             {
                 _view.HideKey(message.ButtonId);
-                if (_model.currentWord.Count <= 0)
+                Publish<KeyCorrectMessage>(new KeyCorrectMessage(5));
+                if (_model.currentWord.Count <= 0) // remaining letter in the current word
                 {
                     SetNewWord();
-                    // Play correct sound
-                }
-                else
-                {
-                    // Play correct sound
                 }
             }
             else
             {
+                Debug.Log("Wrong Key");
+                Publish<KeyCorrectMessage>(new KeyCorrectMessage(-2));
                 // Play wrong sound
             }
         }

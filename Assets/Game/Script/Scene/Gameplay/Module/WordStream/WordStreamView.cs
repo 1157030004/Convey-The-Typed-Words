@@ -22,7 +22,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
 
         public GameObject CreateKeyObject(string id, string keyText)
         {
-            for(int i = 0; i < pooledObjects.Count + 1; i++)
+            for(int i = 0; i < pooledObjects.Count; i++)
             {
                 int randomizedIndex = Random.Range(i, pooledObjects.Count);
                 if(!pooledObjects[randomizedIndex].activeInHierarchy)
