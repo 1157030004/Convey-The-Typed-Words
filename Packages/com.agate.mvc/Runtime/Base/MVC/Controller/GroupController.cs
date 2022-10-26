@@ -66,7 +66,7 @@ namespace Agate.MVC.Base
                 int count = _subControllers.Length;
                 for (int i = 0; i < count; i++)
                 {
-                    yield return _subControllers[i].Finalize();
+                    yield return _subControllers[i].HudController();
                 }
             }
             yield return null;

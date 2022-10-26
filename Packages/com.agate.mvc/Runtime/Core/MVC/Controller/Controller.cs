@@ -18,5 +18,10 @@ namespace Agate.MVC.Core
         {
             yield return null;
         }
+
+        public IEnumerator HudController()
+        {
+            yield return null;
+        }
     }
 }

@@ -136,7 +136,7 @@ namespace Agate.MVC.Core
 
                 for (int i = 0; i < count; i++)
                 {
-                    yield return _dependencies[i].Finalize();
+                    yield return _dependencies[i].HudController();
                 }
             }
         }

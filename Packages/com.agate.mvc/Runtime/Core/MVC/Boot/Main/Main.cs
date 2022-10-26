@@ -63,7 +63,7 @@ namespace Agate.MVC.Core
 
                 for (int i = 0; i < count; i++)
                 {
-                    yield return systems[i].Finalize();
+                    yield return systems[i].HudController();
 
                     if (OnInitializing != null)
                     {
