@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Agate.MVC.Base;
 using UnityEngine;
 
-namespace Shadee.ConTW
+namespace Shadee.ConTW.Gameplay.Countdown
 {
-    public class CountdownController : MonoBehaviour
+    public class CountdownController : ObjectController<CountdownController, CountdownModel, ICountdownModel, CountdownView>
     {
-        // Start is called before the first frame update
-        void Start()
+        private float timeLeft;
+
+        public override void SetView(CountdownView view)
         {
-        
+            base.SetView(view);
+            _view.SetCountdown(StartCountdown);
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnCountdownReset()
         {
-        
+            Debug.Log("Countdown Reset");
+            timeLeft = _model.defaultTime;
+        }
+
+        public IEnumerator StartCountdown()
+        {
+            timeLeft = _model.defaultTime;
+            while (timeLeft > 0)
+            {
+                timeLeft -= Time.deltaTime;
+                _model.SetRemainingTime(timeLeft);
+                yield return null;
+            }
+            SceneLoader.Instance.LoadScene("Bundle");
+            Publish<TimeUpMessage>(new TimeUpMessage());
         }
     }
 }

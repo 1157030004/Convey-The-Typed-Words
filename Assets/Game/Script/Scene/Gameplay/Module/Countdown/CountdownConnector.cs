@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Agate.MVC.Base;
 using UnityEngine;
 
-namespace Shadee.ConTW
+namespace Shadee.ConTW.Gameplay.Countdown
 {
-    public class CountdownConnector : MonoBehaviour
+    public class CountdownConnector : BaseConnector
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void Connect()
         {
-        
+            throw new System.NotImplementedException();
         }
 
-        // Update is called once per frame
-        void Update()
+        protected override void Disconnect()
         {
-        
+            throw new System.NotImplementedException();
         }
     }
 }

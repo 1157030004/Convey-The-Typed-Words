@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shadee.ConTW
+namespace Shadee.ConTW.Gameplay
 {
-    public class TimeUpMessage : MonoBehaviour
+    public struct TimeUpMessage
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        public string Message;
 
-        // Update is called once per frame
-        void Update()
+        public TimeUpMessage(string message)
         {
-        
+            Message = message;
         }
     }
 }

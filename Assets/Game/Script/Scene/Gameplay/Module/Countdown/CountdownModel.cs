@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Agate.MVC.Base;
 using UnityEngine;
 
-namespace Shadee.ConTW
+namespace Shadee.ConTW.Gameplay.Countdown
 {
-    public class CountdownModel : MonoBehaviour
+    public interface ICountdownModel : IBaseModel
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        float remainingTime { get; }
+        float defaultTime { get; }
+    }
+    public class CountdownModel : BaseModel, ICountdownModel
+    {
+        public float remainingTime { get; private set; }
+        public float defaultTime { get; private set; } = 30;
 
-        // Update is called once per frame
-        void Update()
+        public void SetRemainingTime(float time)
         {
-        
+            remainingTime = time;
+            SetDataAsDirty();
         }
     }
 }

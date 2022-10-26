@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using Shadee.ConTW.Gameplay.Countdown;
 using Shadee.ConTW.Gameplay.Typer;
 using Shadee.ConTW.Gameplay.WordStream;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Shadee.ConTW.Gameplay
         public override string SceneName { get { return "Gameplay"; } }
 
         public WordStreamController _wordStreamController;
+        private CountdownController _countdownController;
 
         protected override IConnector[] GetSceneConnectors()
         {
@@ -26,6 +28,7 @@ namespace Shadee.ConTW.Gameplay
             return new IController[]{
                 new WordStreamController(),
                 new TyperController(),
+                new CountdownController(),
             };
         }
 
@@ -33,6 +36,7 @@ namespace Shadee.ConTW.Gameplay
         {
             _view.Init(SceneName, Back);
             _wordStreamController.SetView(_view.WordStreamView);
+            _countdownController.SetView(_view.CountdownView);
             yield return null;
         }
 
