@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Agate.MVC.Base;
-using Shadee.ConTW.Gameplay.Typer;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

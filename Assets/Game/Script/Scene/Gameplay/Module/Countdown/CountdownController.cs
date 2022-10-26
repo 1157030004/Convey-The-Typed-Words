@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Agate.MVC.Base;
 using Shadee.ConTW.Gameplay.CoinBucket;
 using UnityEngine;
