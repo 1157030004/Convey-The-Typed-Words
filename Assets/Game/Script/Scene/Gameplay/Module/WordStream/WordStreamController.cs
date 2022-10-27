@@ -19,6 +19,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
         private CoinBucketController _coinBucketController;
         private AsyncOperationHandle handle;
         private GameObject _keyObject;
+        private bool _shouldShuffle = false;
         public override void SetView(WordStreamView view)
         {
             base.SetView(view);
@@ -43,7 +44,11 @@ namespace Shadee.ConTW.Gameplay.WordStream
         private Queue<string> PrepareWords(string[] words)
         {
             List<string> preparedWords = words.Where(word => word.Length < 10).ToList();
-            preparedWords = ShuffleList(preparedWords);
+            if(_shouldShuffle)
+            {
+                preparedWords = ShuffleList(preparedWords);
+                return new Queue<string>(preparedWords);
+            }
             return new Queue<string>(preparedWords);
         }
 

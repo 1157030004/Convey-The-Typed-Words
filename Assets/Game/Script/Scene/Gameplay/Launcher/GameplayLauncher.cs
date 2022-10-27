@@ -4,6 +4,7 @@ using Agate.MVC.Base;
 using Agate.MVC.Core;
 using Shadee.ConTW.Gameplay.CoinBucket;
 using Shadee.ConTW.Gameplay.Countdown;
+using Shadee.ConTW.Gameplay.Poser;
 using Shadee.ConTW.Gameplay.Typer;
 using Shadee.ConTW.Gameplay.WordStream;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Shadee.ConTW.Gameplay
         public WordStreamController _wordStreamController;
         private CountdownController _countdownController;
         private CoinBucketController _coinBucketController;
+        private PoserController _poserController;
 
         protected override IConnector[] GetSceneConnectors()
         {
@@ -33,6 +35,7 @@ namespace Shadee.ConTW.Gameplay
                 new TyperController(),
                 new CountdownController(),
                 new CoinBucketController(),
+                new PoserController(),
             };
         }
 
@@ -42,6 +45,7 @@ namespace Shadee.ConTW.Gameplay
             _wordStreamController.SetView(_view.WordStreamView);
             _countdownController.SetView(_view.CountdownView);
             _coinBucketController.SetView(_view.CoinBucketView);
+            _poserController.SetView(_view.PoserView);
             yield return null;
         }
 

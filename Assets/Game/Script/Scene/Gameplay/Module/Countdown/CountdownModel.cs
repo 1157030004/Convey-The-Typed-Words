@@ -7,13 +7,13 @@ namespace Shadee.ConTW.Gameplay.Countdown
 {
     public interface ICountdownModel : IBaseModel
     {
-        float remainingTime { get; }
-        float defaultTime { get; }
+        public float remainingTime { get; }
+        public float defaultTime { get; }
     }
     public class CountdownModel : BaseModel, ICountdownModel
     {
         public float remainingTime { get; private set; }
-        public float defaultTime { get; private set; } = 30;
+        public float defaultTime { get; private set; } = 100;
 
         public void SetRemainingTime(float time)
         {
