@@ -5,6 +5,7 @@ using Agate.MVC.Core;
 using Shadee.ConTW.Gameplay.CoinBucket;
 using Shadee.ConTW.Gameplay.Countdown;
 using Shadee.ConTW.Gameplay.Poser;
+using Shadee.ConTW.Gameplay.Sound;
 using Shadee.ConTW.Gameplay.Typer;
 using Shadee.ConTW.Gameplay.WordStream;
 using UnityEngine;
@@ -37,6 +38,7 @@ namespace Shadee.ConTW.Gameplay
                 new CountdownController(),
                 new CoinBucketController(),
                 new PoserController(),
+                new SoundController(),
             };
         }
 
