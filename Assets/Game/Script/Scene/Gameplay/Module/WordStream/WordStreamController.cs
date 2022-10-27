@@ -102,6 +102,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
                 if (_model.currentWord.Count <= 0) // remaining letter in the current word
                 {
                     SetNewWord();
+                    Publish<NewWordMessage>(new NewWordMessage());
                 }
             }
             else
@@ -112,11 +113,6 @@ namespace Shadee.ConTW.Gameplay.WordStream
             }
         }
 
-
-        public override IEnumerator Initialize()
-        {
-            yield return base.Initialize();
-        }
 
         public override IEnumerator Terminate()
         {

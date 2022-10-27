@@ -17,14 +17,18 @@ namespace Shadee.ConTW.Gameplay.Poser
 
         }
 
+        public void ChangeAnimation(NewWordMessage message)
+        {
+            _view.Animator.SetTrigger("isPosing");
+        }
+
         private IEnumerator StartPosing()
         {
             while (true)
             {
                 yield return new WaitForSeconds(3);
                 Debug.Log(_view.Animator.GetInteger("poseIndex"));
-                _view.Animator.SetInteger("poseIndex", Random.Range(0, 6));
-                _view.Animator.SetTrigger("isPosing");
+                _view.Animator.SetInteger("poseIndex", Random.Range(0, 5));
             }
         }
     }

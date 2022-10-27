@@ -20,7 +20,7 @@ namespace Shadee.ConTW.Gameplay.Poser
         public void Init()
         {
             _protagonist = FindObjectOfType<Protagonist>();
-            _animator = _protagonist.GetComponent<Animator>();
+            _animator = _protagonist.GetComponentInChildren<Animator>();
         }
         protected override void InitRenderModel(IPoserModel model)
         {

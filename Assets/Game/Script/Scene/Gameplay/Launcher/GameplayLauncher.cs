@@ -25,6 +25,7 @@ namespace Shadee.ConTW.Gameplay
             return new IConnector[]{
                 new WordStreamConnector(),
                 new CoinBucketConnector(),
+                new PoserConnector(),
             };
         }
 
