@@ -19,7 +19,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
 
         public void SetNewWord(string word)
         {
-            currentWord = new LinkedList<char>(word.ToLower());
+            currentWord = new LinkedList<char>(word);
             SetDataAsDirty();
         }
 
