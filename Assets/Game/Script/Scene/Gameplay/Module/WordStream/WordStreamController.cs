@@ -23,9 +23,6 @@ namespace Shadee.ConTW.Gameplay.WordStream
         public override void SetView(WordStreamView view)
         {
             base.SetView(view);
-            LoadWordData();
-            _view.InitPool(20);
-
         }
 
         private async void LoadWordData()
@@ -71,6 +68,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
             {
                 Publish<GameplayEndMessage>(new GameplayEndMessage());
                 SceneLoader.Instance.LoadScene("Bundle");
+                return;
             }
 
             _model.SetNewWord(_model.wordQueue.Dequeue());
@@ -117,6 +115,12 @@ namespace Shadee.ConTW.Gameplay.WordStream
         {
             Addressables.Release(handle);
             return base.Terminate();
+        }
+
+        public void OnCinematicEnd(CinematicEndMessage message)
+        {
+            LoadWordData();
+            _view.InitPool(20);
         }
     }
 

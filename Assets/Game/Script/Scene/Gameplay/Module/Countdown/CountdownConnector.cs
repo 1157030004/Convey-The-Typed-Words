@@ -7,14 +7,20 @@ namespace Shadee.ConTW.Gameplay.Countdown
 {
     public class CountdownConnector : BaseConnector
     {
+        private CountdownController _controller;
+        
+        public void OnCinematicEnd(CinematicEndMessage message)
+        {
+            _controller.OnCinematicEnd(message);
+        }
         protected override void Connect()
         {
-            throw new System.NotImplementedException();
+            Subscribe<CinematicEndMessage>(OnCinematicEnd);
         }
 
         protected override void Disconnect()
         {
-            throw new System.NotImplementedException();
+            Unsubscribe<CinematicEndMessage>(OnCinematicEnd);
         }
     }
 }

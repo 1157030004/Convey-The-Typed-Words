@@ -14,14 +14,21 @@ namespace Shadee.ConTW.Gameplay.WordStream
             _controller.CheckKey(message);
         }
 
+        public void OnCinematicEnd(CinematicEndMessage message)
+        {
+            _controller.OnCinematicEnd(message);
+        }
+
         protected override void Connect()
         {
             Subscribe<KeySelectedMessage>(OnKeySelected);
+            Subscribe<CinematicEndMessage>(OnCinematicEnd);
         }
 
         protected override void Disconnect()
         {
             Unsubscribe<KeySelectedMessage>(OnKeySelected);
+            Unsubscribe<CinematicEndMessage>(OnCinematicEnd);
         }
     }
 }

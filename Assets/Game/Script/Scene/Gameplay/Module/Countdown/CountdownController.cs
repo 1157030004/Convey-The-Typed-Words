@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Agate.MVC.Base;
 using Shadee.ConTW.Gameplay.CoinBucket;
@@ -8,7 +9,15 @@ namespace Shadee.ConTW.Gameplay.Countdown
     public class CountdownController : ObjectController<CountdownController, CountdownModel, ICountdownModel, CountdownView>
     {
         private CoinBucketController _coinBucketController;
-        private float timeLeft;
+        private float _timeLeft;
+        private bool _shouldStartCountdown = false;
+
+        public void OnCinematicEnd(CinematicEndMessage message)
+        {
+            Debug.Log("Cinematic ended");
+            _shouldStartCountdown = true;
+            Debug.Log("Countdown started is " + _shouldStartCountdown);
+        }
 
         public override void SetView(CountdownView view)
         {
@@ -19,16 +28,21 @@ namespace Shadee.ConTW.Gameplay.Countdown
         public void OnCountdownReset()
         {
             Debug.Log("Countdown Reset");
-            timeLeft = _model.defaultTime;
+            _timeLeft = _model.defaultTime;
         }
 
         public IEnumerator StartCountdown()
         {
-            timeLeft = _model.defaultTime;
-            while (timeLeft > 0)
+            _timeLeft = _model.defaultTime;
+            while (_timeLeft > 0)
             {
-                timeLeft -= Time.deltaTime;
-                _model.SetRemainingTime(timeLeft);
+                Debug.Log(_shouldStartCountdown);
+                // if shouldStart is falese, then it will not start the countdown
+                if (_shouldStartCountdown)
+                {
+                    _timeLeft -= Time.deltaTime;
+                    _model.SetRemainingTime(_timeLeft);
+                }
                 yield return null;
             }
             SceneLoader.Instance.LoadScene("Bundle");

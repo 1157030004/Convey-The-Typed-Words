@@ -29,6 +29,7 @@ namespace Shadee.ConTW.Gameplay
                 new WordStreamConnector(),
                 new CoinBucketConnector(),
                 new PoserConnector(),
+                new CountdownConnector(),
             };
         }
 
