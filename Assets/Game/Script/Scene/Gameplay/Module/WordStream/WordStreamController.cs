@@ -24,7 +24,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
         {
             base.SetView(view);
             LoadWordData();
-            _view.InitPool(10);
+            _view.InitPool(20);
 
         }
 
@@ -43,7 +43,7 @@ namespace Shadee.ConTW.Gameplay.WordStream
 
         private Queue<string> PrepareWords(string[] words)
         {
-            List<string> preparedWords = words.Where(word => word.Length < 10).ToList();
+            List<string> preparedWords = words.Where(word => word.Length < 20).ToList();
             if(_shouldShuffle)
             {
                 preparedWords = ShuffleList(preparedWords);
@@ -75,7 +75,6 @@ namespace Shadee.ConTW.Gameplay.WordStream
 
             _model.SetNewWord(_model.wordQueue.Dequeue());
             string word = string.Join("", _model.currentWord.ToArray());
-
             foreach(var key in word)
             {
                 ShowKeys(key);
