@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using Shadee.ConTW.Gameplay.Cinematics;
 using Shadee.ConTW.Gameplay.CoinBucket;
 using Shadee.ConTW.Gameplay.Countdown;
 using Shadee.ConTW.Gameplay.Poser;
@@ -20,6 +21,7 @@ namespace Shadee.ConTW.Gameplay
         private CountdownController _countdownController;
         private CoinBucketController _coinBucketController;
         private PoserController _poserController;
+        private CinematicsController _cinematicsController;
 
         protected override IConnector[] GetSceneConnectors()
         {
@@ -39,6 +41,7 @@ namespace Shadee.ConTW.Gameplay
                 new CoinBucketController(),
                 new PoserController(),
                 new SoundController(),
+                new CinematicsController(),
             };
         }
 
@@ -49,6 +52,7 @@ namespace Shadee.ConTW.Gameplay
             _countdownController.SetView(_view.CountdownView);
             _coinBucketController.SetView(_view.CoinBucketView);
             _poserController.SetView(_view.PoserView);
+            _cinematicsController.SetView(_view.CinematicsView);
             yield return null;
         }
 
